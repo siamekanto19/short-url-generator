@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Murecho } from 'next/font/google'
 import ReactQueryProvider from '@/components/providers/ReactQueryProvider'
+import { Toaster } from 'sonner'
 
 const murecho = Murecho({
   subsets: ['latin'],
@@ -20,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${murecho.className} antialiased`}>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          {children}
+          <Toaster />
+        </ReactQueryProvider>
       </body>
     </html>
   )
