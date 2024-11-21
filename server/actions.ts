@@ -1,8 +1,8 @@
 'use server'
 import { generateUniqueString } from '@/lib/utils'
 import { generateShortUrlSchema } from '@/schemas'
-import { db } from './db'
 import { z } from 'zod'
+import prisma from './db'
 
 export const generateShortUrl = async (input: z.infer<typeof generateShortUrlSchema>) => {
   const { data, error } = generateShortUrlSchema.safeParse(input)
@@ -12,7 +12,7 @@ export const generateShortUrl = async (input: z.infer<typeof generateShortUrlSch
   }
 
   if (data) {
-    const url = await db.shortUrl.create({
+    const url = await prisma.shortUrl.create({
       data: {
         originalUrl: data.originalUrl,
         validUntil: data.validUntil,

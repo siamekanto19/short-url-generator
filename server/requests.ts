@@ -1,8 +1,8 @@
-import { db } from './db'
 import dayjs from 'dayjs'
+import prisma from './db'
 
 export const fetchOriginalUrl = async (urlPath: string) => {
-  const url = await db.shortUrl.findUnique({
+  const url = await prisma.shortUrl.findUnique({
     where: {
       modifiedUrlPath: urlPath,
     },
