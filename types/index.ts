@@ -1,3 +1,3 @@
-declare interface PageProps {
+export type PageProps = {
   params: Record<string, string>
 }
