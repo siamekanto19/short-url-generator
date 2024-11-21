@@ -1,10 +1,11 @@
 import { Button } from '@/components/ui/button'
 import { fetchOriginalUrl } from '@/server/requests'
+import { NextPage } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
-const ShortUrlPage = async ({ params }: { params: Record<string, string> }) => {
+const ShortUrlPage: NextPage<PageProps> = async ({ params }) => {
   const originalUrl = await fetchOriginalUrl(params.shortUrl)
 
   if (originalUrl) {
